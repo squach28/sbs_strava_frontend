@@ -24,24 +24,24 @@ const LeaderboardList = () => {
 
     return (
         leaderboard ?
-        <div className="px-8">
+        <div className="md:px-[10em] px-8">
             <div className="flex items-center justify-between">
-                <h1 className="text-xl">Leaderboard</h1>
-                <p className="text-sm">View old leaderboards</p>
+                <h1 className="text-2xl">Leaderboard</h1>
+                <button className="text-sm bg-blue-400 px-2 py-1 rounded-lg">Past leaderboards</button>
             </div>
-            <div className="flex justify-between">
+            <div className="flex justify-between my-3">
                 <button 
-                    className={`flex-1 ${selectedTime === 'month' ? 'bg-green-500' : 'bg-white'}`} 
+                    className={`flex-1 p-2 rounded-l-lg border-gray-50 border ${selectedTime === 'month' ? 'bg-green-500' : 'bg-[#525458]'}`} 
                     onClick={selectMonthLeaderboard}
                     >Month
                 </button>
                 <button 
-                    className={`flex-1 ${selectedTime === 'year' ? 'bg-green-500' : 'bg-white'}`} 
+                    className={`flex-1 p-2 text-[#F0ECE5] border-gray-50 border ${selectedTime === 'year' ? 'bg-green-500' : 'bg-[#525458]'}`} 
                     onClick={selectYearLeaderboard}
                     >Year
                 </button>
                 <button 
-                    className={`flex-1 ${selectedTime === 'all-time' ? 'bg-green-500' : 'bg-white'}`} 
+                    className={`flex-1 p-2 rounded-r-lg border-gray-50 border ${selectedTime === 'all-time' ? 'bg-green-500' : 'bg-[#525458]'}`} 
                     onClick={selectAllTimeLeaderboard}
                     >All Time
                 </button>

@@ -1,7 +1,9 @@
 export type UserStats = {
-    discordId: string,
-    stravaId: string,
-    numOfActivities: number,
+    discordId: string
+    discordName: string
+    stravaId: string
+    numOfActivities: number
     distance: number
+    avatarUrl: string
 }
 

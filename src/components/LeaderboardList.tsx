@@ -1,9 +1,11 @@
 import { Leaderboard } from "../types/Leaderboard"
 import { useEffect, useState } from "react"
+import LeaderboardListItem from "./LeaderboardListItem"
 
 const LeaderboardList = () => {
     const [leaderboard, setLeaderboard] = useState<Leaderboard | null>(null)
     const [selectedTime, setSelectedTime] = useState<string>('month')
+    const currentDate = new Date()
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}/leaderboard`,)
             .then(res => res.json())
@@ -20,6 +22,19 @@ const LeaderboardList = () => {
 
     const selectAllTimeLeaderboard = () => {
         setSelectedTime('all-time')
+    }
+
+    const renderLeaderboardTitle = () => {
+        switch(selectedTime) {
+            case 'month':
+                return currentDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric'})
+            case 'year':
+                return currentDate.toLocaleDateString('en-US', { year: 'numeric'})
+            case 'all-time':
+                return 'All Time'
+            default:
+                return currentDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric'})
+        }
     }
 
     return (
@@ -46,16 +61,16 @@ const LeaderboardList = () => {
                     >All Time
                 </button>
             </div>
-            <ol className="list-decimal">
-            {leaderboard?.users.map(user => {
-                return(
-                <li key={user.discordId} className="bg-[#B6BBC4] my-3">
-                    <div className="flex gap-3">
-                        <p>{user.discordId}</p>
-                        <p>{user.numOfActivities}</p>
-                        <p>{user.distance}</p>
-                    </div>
-                </li>)
+            <h2 className="text-xl my-3">{renderLeaderboardTitle()}</h2>
+            <ol className="list-decimal flex flex-col gap-2">
+            {leaderboard?.users.map((user, place) => {
+                const props = {
+                    ...user,
+                    place: place + 1
+                }
+                return (
+                    <LeaderboardListItem key={user.discordId} {...props } />
+                )
             })}
             </ol>
         </div>

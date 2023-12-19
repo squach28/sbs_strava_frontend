@@ -4,15 +4,15 @@ type LeaderboardListItemProps = UserStats & {
     place: number
 }
 
-const LeaderboardListItem = ({ discordId, discordName, stravaId, numOfActivities, distance, avatarUrl, place }: LeaderboardListItemProps) => {
+const LeaderboardListItem = ({ discordName, numOfActivities, distance, avatarUrl, place }: LeaderboardListItemProps) => {
     const listBackgroundColor = () => {
         switch(place) {
             case 1:
                 return 'bg-[#FFD700] text-black'
             case 2:
-                return 'bg-gray-300'
+                return 'bg-[#C0C0C0] text-black'
             case 3:
-                return 'bg-brown-300'
+                return 'bg-[#CD7F32] text-black'
             default:
                 return 'bg-gray-500'
 
@@ -25,7 +25,8 @@ const LeaderboardListItem = ({ discordId, discordName, stravaId, numOfActivities
             <img width={50} className="bg-white rounded-full" src={avatarUrl} alt="person" />
             <div className="flex flex-col">
                 <p className="font-bold">{discordName}</p>
-                <div className="flex">
+                <div className="flex flex-col text-sm">
+                    <p>{numOfActivities} activities</p>
                     <p>{distance} mi</p>
                 </div>
             </div>

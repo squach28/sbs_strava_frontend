@@ -1,6 +1,7 @@
 import { Leaderboard } from "../types/Leaderboard"
 import { useEffect, useState } from "react"
 import LeaderboardListItem from "./LeaderboardListItem"
+// import data from './data.json'
 
 const LeaderboardList = () => {
     const [leaderboard, setLeaderboard] = useState<Leaderboard | null>(null)
@@ -10,6 +11,12 @@ const LeaderboardList = () => {
         fetch(`${import.meta.env.VITE_API_URL}/leaderboard`,)
             .then(res => res.json())
             .then(data => setLeaderboard(data))
+        // const sampleLeaderboard: Leaderboard = {
+        //     month: "12",
+        //     year: '2023',
+        //     users: data
+        // }
+        // setLeaderboard(sampleLeaderboard)
     }, [selectedTime])
 
     const selectMonthLeaderboard = () => {

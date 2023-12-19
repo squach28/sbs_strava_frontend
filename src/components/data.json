@@ -1,0 +1,34 @@
+[
+    {
+        "discordId": "aaa",
+        "discordName": "aaa",
+        "stravaId": "aaa",
+        "numOfActivities": 10,
+        "distance": 10,
+        "avatarUrl": "https://cdn.discordapp.com/avatars/193112121683214336/163e19571e8bb9291646f3f6c1ab16c8"
+    },
+    {
+        "discordId": "bbb",
+        "discordName": "bbb",
+        "stravaId": "bbb",
+        "numOfActivities": 5,
+        "distance": 5,
+        "avatarUrl": "https://cdn.discordapp.com/avatars/193112121683214336/163e19571e8bb9291646f3f6c1ab16c8"
+    },
+    {
+        "discordId": "ccc",
+        "discordName": "ccc",
+        "stravaId": "ccc",
+        "numOfActivities": 3,
+        "distance": 3,
+        "avatarUrl": "https://cdn.discordapp.com/avatars/193112121683214336/163e19571e8bb9291646f3f6c1ab16c8"
+    },
+    {
+        "discordId": "ddd",
+        "discordName": "ddd",
+        "stravaId": "ddd",
+        "numOfActivities": 100,
+        "distance": 100,
+        "avatarUrl": "https://cdn.discordapp.com/avatars/193112121683214336/163e19571e8bb9291646f3f6c1ab16c8"
+    }
+]

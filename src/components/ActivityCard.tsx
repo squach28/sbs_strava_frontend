@@ -7,8 +7,11 @@ type ActivityCardProps = Activity & {
 
 }
 
-const ActivityCard = ({ name, discordName, avatarUrl, distance }: ActivityCardProps) => {
-    const miles = convertToMiles(distance)
+const ActivityCard = ({ name, discordName, avatarUrl, distance, elapsed_time }: ActivityCardProps) => {
+    const miles: number = convertToMiles(distance)
+    const time = elapsed_time / 60
+    const hours = time / 60
+    const minutes = time
     return (
         <li className="flex flex-col bg-gray-200 text-black rounded-lg gap-1 p-2">
             <div className="flex items-center gap-2">
@@ -17,6 +20,7 @@ const ActivityCard = ({ name, discordName, avatarUrl, distance }: ActivityCardPr
             </div>
             <p className="text-lg font-bold">{name}</p>
             <p>Distance: {miles} {miles > 1 ? 'miles' : 'mile'} </p>
+            <p>Time: {hours >= 1 ? `${hours}h` : ''} {minutes % 60 !== 0 ? `${minutes}m` : ''}</p>
         </li>
     )
 }

@@ -15,21 +15,24 @@ const Home = () => {
         <div className="bg-[#31304D] text-[#F0ECE5]">
             <Navbar />
             <h1 className="px-8 text-3xl font-bold">Home</h1>
-            {allActivities ? 
-                <ul className="flex flex-col gap-4 px-8 py-4">
-                    {allActivities.map(userActivities => {
-                        return userActivities.activities.map(activity => { 
-                            const activityCardProps = {
-                                ...activity,
-                                discordName: userActivities.discordName,
-                                avatarUrl: userActivities.avatarUrl
-                            }
-                            return <ActivityCard key={activity.id} {...activityCardProps} />
-                    })
-                    }
-                    )}
-                </ul> : 
-                <div>sad face</div>}
+            {allActivities ?
+                allActivities.length > 0 ? 
+                    <ul className="flex flex-col gap-4 px-8 py-4">
+                        {allActivities.map(userActivities => {
+                            return userActivities.activities.map(activity => { 
+                                const activityCardProps = {
+                                    ...activity,
+                                    discordName: userActivities.discordName,
+                                    avatarUrl: userActivities.avatarUrl
+                                }
+                                return <ActivityCard key={activity.id} {...activityCardProps} />
+                        })
+                        }
+                        )} 
+                    </ul> : 
+                    <p className="mx-auto">No activites</p> 
+                : 
+                <div>Loading...</div>}
         </div>
     )
 }

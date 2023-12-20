@@ -48,8 +48,7 @@ const LeaderboardList = () => {
         leaderboard ?
         <div className="md:px-[10em] px-8">
             <div className="flex items-center justify-between">
-                <h1 className="text-2xl">Leaderboard</h1>
-                <button className="text-sm bg-blue-400 px-2 py-1 rounded-lg">Past leaderboards</button>
+                <h1 className="text-3xl font-bold">Leaderboard</h1>
             </div>
             <div className="flex justify-between my-3">
                 <button 
@@ -68,7 +67,7 @@ const LeaderboardList = () => {
                     >All Time
                 </button>
             </div>
-            <h2 className="text-xl my-3">{renderLeaderboardTitle()}</h2>
+            <h2 className="text-xl my-3 font-bold">{renderLeaderboardTitle()}</h2>
             <ol className="list-decimal flex flex-col gap-2">
             {leaderboard?.users.map((user, place) => {
                 const props = {

@@ -12,7 +12,7 @@ const Home = () => {
     }, [])
     console.log(allActivities)
     return (
-        <div className="bg-[#31304D] text-[#F0ECE5] h-screen">
+        <div className="bg-[#31304D] text-[#F0ECE5]">
             <Navbar />
             <h1 className="px-8 text-3xl font-bold">Home</h1>
             {allActivities ? 

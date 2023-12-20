@@ -1,4 +1,4 @@
-import { Activity } from "../types/UserActivities"
+import { Activity } from "../types/Activity"
 import { convertToMiles } from "../utils/unitConverter"
 
 type ActivityCardProps = Activity & {

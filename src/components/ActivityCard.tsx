@@ -1,5 +1,6 @@
 import { Activity } from "../types/Activity"
 import { convertToMiles } from "../utils/unitConverter"
+import { Link } from "react-router-dom"
 
 type ActivityCardProps = Activity & {
     discordName: string,
@@ -16,8 +17,8 @@ const ActivityCard = ({ name, discordName, avatarUrl, distance, elapsed_time, sp
     return (
         <li className="flex flex-col bg-gray-200 text-black rounded-lg gap-1 p-3 shadow-lg">
             <div className="flex items-center gap-2">
-                <img className="rounded-full w-10" src={avatarUrl} alt={`profile picture of ${discordName}`} />
-                <p className="font-bold">{discordName}</p>
+                    <Link to="/"><img className="rounded-full w-10 border-2 border-black" src={avatarUrl} alt={`profile picture of ${discordName}`} /></Link>
+                    <Link to="/"><p className="font-bold">{discordName}</p></Link>
             </div>
             <p className="text-lg font-bold">{name} - {sport_type}</p>
             <p>{date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})} - {date.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric'})}</p>

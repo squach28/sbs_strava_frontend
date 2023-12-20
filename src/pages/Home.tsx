@@ -22,7 +22,7 @@ const Home = () => {
                     </ul> : 
                     <p className="mx-auto">No activites</p> 
                 : 
-                <div>Loading...</div>}
+                <div className="h-screen mx-auto font-bold">Loading...</div>}
         </div>
     )
 }

@@ -21,7 +21,7 @@ const LeaderboardListItem = ({ discordName, numOfActivities, distance, avatarUrl
 
     return (
         <li className={`flex gap-3 ${listBackgroundColor()} px-4 py-3 rounded-md items-center`}>
-            <p>{place}</p>
+            <p className="font-bold text-2xl">{place}</p>
             <img width={50} className="bg-white rounded-full" src={avatarUrl} alt="person" />
             <div className="flex flex-col">
                 <p className="font-bold">{discordName}</p>

@@ -4,6 +4,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './pages/Home.tsx'
 import Leaderboard from './pages/Leaderboard.tsx'
+import UserPage from './pages/UserPage.tsx'
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
   {
     path: '/leaderboard',
     element: <Leaderboard />
+  },
+  {
+    path: '/user/:id',
+    element: <UserPage />
   }
 ])
 

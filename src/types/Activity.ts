@@ -1,5 +1,6 @@
 export type Activity = {
     id: number,
+    discordId: string,
     name: string,
     discordName: string,
     avatarUrl: string,

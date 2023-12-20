@@ -1,8 +1,11 @@
+import { Link } from "react-router-dom"
+
 const Navbar = () => {
   return (
-    <div className="w-full flex px-8 py-4 justify-between items-center">
-        <p className="text-xl"><a href="/">SBS Strava</a></p>
-    </div>
+    <ul className="w-full flex px-8 py-4 justify-between items-center">
+        <li className="text-xl font-bold"><Link to="/">SBS Strava</Link></li>
+        <li className="text-lg"><Link to="/leaderboard">Leaderboard</Link></li>
+    </ul>
   )
 }
 

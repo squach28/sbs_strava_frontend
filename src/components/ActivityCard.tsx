@@ -13,19 +13,19 @@ const ActivityCard = ({ name, discordId, discordName, avatarUrl, distance, elaps
     const minutes = time
     const date = new Date(start_date_local)
     return (
-        <li className="flex flex-col w-3/4 md:w-1/2 bg-white text-black dark:bg-gray-200 dark:text-black rounded-lg gap-1 p-3 shadow-lg">
+        <li className="flex flex-col w-full md:w-1/3 bg-white text-black dark:bg-gray-200 dark:text-black rounded-lg gap-1 p-3 shadow-lg">
         {avatarUrl ? <div className="flex items-center gap-2">
                         <Link to={`/user/${discordId}`}><img className="rounded-full w-10 border-2 border-black" src={avatarUrl} alt={`profile picture of ${discordName}`} /></Link>
                         <Link to={`/user/${discordId}`}><p className="font-bold">{discordName}</p></Link>
                     </div> : null}
-            <p className="text-lg font-bold">{name} - {sport_type}</p>
-            <p>{date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})} - {date.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric'})}</p>
-            <div className="flex justify-center items-center">
-                <div className="flex flex-col flex-1 justify-center items-center mt-3">
+            <p className="text-xl md:text-2xl font-bold">{name} - {sport_type}</p>
+            <p className="text-lg md:text-xl">{date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})} - {date.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric'})}</p>
+            <div className="flex justify-center items-center text-lg md:text-xl mt-3">
+                <div className="flex flex-col flex-1 justify-center items-center">
                     <p className="font-bold">Distance</p>
                     <p>{distance} {distance > 1 ? 'miles' : 'mile'}</p>
                 </div>
-                <div className="flex flex-col flex-1 items-center">
+                <div className="flex flex-col flex-1 justify-center items-center">
                     <p className="font-bold">Time</p>
                     <p>{hours >= 1 ? `${hours}h` : ''} {minutes % 60 !== 0 ? `${minutes}m` : ''}</p>
                 </div>

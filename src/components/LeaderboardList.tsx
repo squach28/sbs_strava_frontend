@@ -50,25 +50,25 @@ const LeaderboardList = () => {
             <div className="flex items-center justify-between">
                 <h1 className="text-3xl font-bold ">Leaderboard</h1>
             </div>
-            <div className="flex justify-between my-3 md:w-3/4">
+            <div className="flex justify-between my-3 w-full md:w-1/2">
                 <button 
-                    className={`flex-1 p-2 rounded-l-lg border-gray-50 border ${selectedTime === 'month' ? 'bg-green-500' : 'bg-[#525458]'}`} 
+                    className={`flex-1 p-2 rounded-l-lg border-gray-50 border ${selectedTime === 'month' ? 'bg-green-500 font-bold' : 'bg-[#525458]'}`} 
                     onClick={selectMonthLeaderboard}
                     >Month
                 </button>
                 <button 
-                    className={`flex-1 p-2 text-[#F0ECE5] border-gray-50 border ${selectedTime === 'year' ? 'bg-green-500' : 'bg-[#525458]'}`} 
+                    className={`flex-1 p-2 text-[#F0ECE5] border-gray-50 border ${selectedTime === 'year' ? 'bg-green-500 font-bold' : 'bg-[#525458]'}`} 
                     onClick={selectYearLeaderboard}
                     >Year
                 </button>
                 <button 
-                    className={`flex-1 p-2 rounded-r-lg border-gray-50 border ${selectedTime === 'all-time' ? 'bg-green-500' : 'bg-[#525458]'}`} 
+                    className={`flex-1 p-2 rounded-r-lg border-gray-50 border ${selectedTime === 'all-time' ? 'bg-green-500 font-bold' : 'bg-[#525458]'}`} 
                     onClick={selectAllTimeLeaderboard}
                     >All Time
                 </button>
             </div>
             <h2 className="text-xl my-3 font-bold">{renderLeaderboardTitle()}</h2>
-            <ol className="list-decimal flex flex-col gap-2 md:w-3/4">
+            <ol className="list-decimal flex flex-col gap-2 w-full md:w-1/2">
             {leaderboard?.users.map((user, place) => {
                 const props = {
                     ...user,

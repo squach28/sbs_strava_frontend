@@ -23,7 +23,6 @@ const UserPage = () => {
             .then(res => res.json())
             .then(data => setStats(data))
     }, [id])
-
     return (
         <div>
             <Navbar />
@@ -36,8 +35,8 @@ const UserPage = () => {
                         {stats ? <StatsTable stats={stats} /> : <p>Loading stats...</p>}
                     </div>
                     <div>
+                        <ul className="flex flex-col gap-4 items-center">
                         <h2 className="font-bold text-xl">Recent Activities</h2>
-                        <ul className="flex flex-col gap-4">
                             {recentActivities ? recentActivities.map(activity => <ActivityCard key={activity.id} {...activity} />) : null}
                         </ul>
                     </div>

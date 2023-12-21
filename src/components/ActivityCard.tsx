@@ -12,6 +12,7 @@ const ActivityCard = ({ name, discordId, discordName, avatarUrl, distance, elaps
     const hours = time / 60
     const minutes = time
     const date = new Date(start_date_local)
+    console.log(distance)
     return (
         <li className="flex flex-col bg-gray-200 text-black rounded-lg gap-1 p-3 shadow-lg">
         {avatarUrl ? <div className="flex items-center gap-2">

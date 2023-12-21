@@ -8,16 +8,44 @@ const LeaderboardList = () => {
     const [selectedTime, setSelectedTime] = useState<string>('month')
     const currentDate = new Date()
     useEffect(() => {
+        switch(selectedTime) {
+            case 'month':
+                getMonthlyLeaderboard()
+                break
+            case 'year':
+                getYearLeaderboard()
+                break
+            case 'all-time':
+                getAllTimeLeaderboard()
+                break
+            default:
+                getMonthlyLeaderboard()
+                break
+        }
+    }, [selectedTime])
+
+    console.log(leaderboard)
+
+    const getMonthlyLeaderboard = () => {
         fetch(`${import.meta.env.VITE_API_URL}/leaderboard`,)
             .then(res => res.json())
             .then(data => setLeaderboard(data))
-        // const sampleLeaderboard: Leaderboard = {
-        //     month: "12",
-        //     year: '2023',
-        //     users: data
-        // }
-        // setLeaderboard(sampleLeaderboard)
-    }, [selectedTime])
+    }
+
+    const getYearLeaderboard = () => {
+        fetch(`${import.meta.env.VITE_API_URL}/leaderboard?monthOrYear=${currentDate.getFullYear()}`)
+            .then(res => res.json())
+            .then(data => setLeaderboard(data))
+    }
+
+    const getAllTimeLeaderboard = () => {
+        fetch(`${import.meta.env.VITE_API_URL}/leaderboard/allTime`)
+            .then(res => res.json())
+            .then(data => setLeaderboard((prev) => {
+                console.log(prev)
+                return data
+            }))
+    }
 
     const selectMonthLeaderboard = () => {
         setSelectedTime('month')
@@ -69,7 +97,8 @@ const LeaderboardList = () => {
             </div>
             <h2 className="text-xl my-3 font-bold">{renderLeaderboardTitle()}</h2>
             <ol className="list-decimal flex flex-col gap-2 w-full md:w-1/2">
-            {leaderboard?.users.map((user, place) => {
+            {leaderboard ? leaderboard.users.map((user, place) => {
+                console.log(leaderboard.users)
                 const props = {
                     ...user,
                     place: place + 1
@@ -77,7 +106,7 @@ const LeaderboardList = () => {
                 return (
                     <LeaderboardListItem key={user.discordId} {...props } />
                 )
-            })}
+            }) : null}
             </ol>
         </div>
         :

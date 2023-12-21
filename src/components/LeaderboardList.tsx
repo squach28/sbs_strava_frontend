@@ -46,11 +46,11 @@ const LeaderboardList = () => {
 
     return (
         leaderboard ?
-        <div className="md:px-[10em] px-8">
+        <div className="md:px-[10em] px-8 flex flex-col items-center">
             <div className="flex items-center justify-between">
-                <h1 className="text-3xl font-bold">Leaderboard</h1>
+                <h1 className="text-3xl font-bold ">Leaderboard</h1>
             </div>
-            <div className="flex justify-between my-3">
+            <div className="flex justify-between my-3 md:w-3/4">
                 <button 
                     className={`flex-1 p-2 rounded-l-lg border-gray-50 border ${selectedTime === 'month' ? 'bg-green-500' : 'bg-[#525458]'}`} 
                     onClick={selectMonthLeaderboard}
@@ -68,7 +68,7 @@ const LeaderboardList = () => {
                 </button>
             </div>
             <h2 className="text-xl my-3 font-bold">{renderLeaderboardTitle()}</h2>
-            <ol className="list-decimal flex flex-col gap-2">
+            <ol className="list-decimal flex flex-col gap-2 md:w-3/4">
             {leaderboard?.users.map((user, place) => {
                 const props = {
                     ...user,

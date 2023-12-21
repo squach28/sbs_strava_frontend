@@ -10,14 +10,13 @@ const Home = () => {
             .then(res => res.json())
             .then(data => setActivities(data))
     }, [])
-    console.log(activities)
     return (
-        <div className="bg-[#31304D] text-[#F0ECE5]">
+        <div className="dark:bg-primary-dark dark:text-text-dark bg-primary-light text-text-light">
             <Navbar />
-            <h1 className="px-8 text-3xl font-bold">Home</h1>
             {activities ?
                 activities.length > 0 ? 
-                    <ul className="flex flex-col gap-4 px-8 py-4">
+                    <ul className="flex flex-col gap-4 px-8 py-4 items-center">
+                        <h1 className="px-8 text-3xl font-bold">Home</h1>
                         {activities.map(activity => <ActivityCard key={activity.id} {...activity} />)}
                     </ul> : 
                     <p className="mx-auto">No activites</p> 

@@ -12,9 +12,8 @@ const ActivityCard = ({ name, discordId, discordName, avatarUrl, distance, elaps
     const hours = time / 60
     const minutes = time
     const date = new Date(start_date_local)
-    console.log(distance)
     return (
-        <li className="flex flex-col bg-gray-200 text-black rounded-lg gap-1 p-3 shadow-lg">
+        <li className="flex flex-col w-3/4 md:w-1/2 bg-white text-black dark:bg-gray-200 dark:text-black rounded-lg gap-1 p-3 shadow-lg">
         {avatarUrl ? <div className="flex items-center gap-2">
                         <Link to={`/user/${discordId}`}><img className="rounded-full w-10 border-2 border-black" src={avatarUrl} alt={`profile picture of ${discordName}`} /></Link>
                         <Link to={`/user/${discordId}`}><p className="font-bold">{discordName}</p></Link>
@@ -22,7 +21,7 @@ const ActivityCard = ({ name, discordId, discordName, avatarUrl, distance, elaps
             <p className="text-lg font-bold">{name} - {sport_type}</p>
             <p>{date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'})} - {date.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric'})}</p>
             <div className="flex justify-center items-center">
-                <div className="flex flex-col flex-1 justify-center items-center">
+                <div className="flex flex-col flex-1 justify-center items-center mt-3">
                     <p className="font-bold">Distance</p>
                     <p>{distance} {distance > 1 ? 'miles' : 'mile'}</p>
                 </div>

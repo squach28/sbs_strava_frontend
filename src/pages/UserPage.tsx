@@ -3,11 +3,15 @@ import { useParams } from "react-router-dom"
 import { User } from "../types/User"
 import { Activity } from "../types/Activity"
 import ActivityCard from "../components/ActivityCard"
+import StatsTable from "../components/StatsTable"
+import { Stats } from "../types/Stats"
+import Navbar from "../components/Navbar"
 
 const UserPage = () => {
     const { id } = useParams()
     const [user, setUser] = useState<User | null >(null)
     const [recentActivities, setRecentActivities] = useState<Activity[] | null>(null)
+    const [stats, setStats] = useState<Stats[] | null>(null)
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}/activities/recent?discordId=${id}`)
             .then(res => res.json())
@@ -15,25 +19,32 @@ const UserPage = () => {
         fetch(`${import.meta.env.VITE_API_URL}/user/${id}`)
             .then(res => res.json())
             .then(data => setUser(data))
+        fetch(`${import.meta.env.VITE_API_URL}/stats?discordId=${id}`)
+            .then(res => res.json())
+            .then(data => setStats(data))
     }, [id])
 
     return (
-        user ? 
-            <div className="flex flex-col gap-3 p-4 bg-[#31304D] text-[#F0ECE5]">
-                <img className="rounded-full object-contain w-36 mx-auto border-4 shadow-md" src={user.avatarUrl} alt="" />
-                <h1 className="text-2xl font-bold mx-auto">{user.discordName}</h1>
-                <div>
-                    <h2 className="text-xl font-bold">Stats</h2>    
-                </div> 
-                <div>
-                    <h2 className="font-bold text-xl">Recent Activities</h2>
-                    <ul className="flex flex-col gap-4">
-                        {recentActivities ? recentActivities.map(activity => <ActivityCard key={activity.id} {...activity} />) : null}
-                    </ul>
+        <div>
+            <Navbar />
+            {        user ?
+                <div className="flex flex-col gap-3 p-4 dark:bg-[#31304D] dark:text-[#F0ECE5]">
+                    <img className="rounded-full object-contain w-36 mx-auto border-4 shadow-md" src={user.avatarUrl} alt="" />
+                    <h1 className="text-2xl font-bold mx-auto">{user.discordName}</h1>
+                    <div>
+                        <h2 className="text-xl font-bold">Stats</h2>
+                        {stats ? <StatsTable stats={stats} /> : <p>Loading stats...</p>}
+                    </div>
+                    <div>
+                        <h2 className="font-bold text-xl">Recent Activities</h2>
+                        <ul className="flex flex-col gap-4">
+                            {recentActivities ? recentActivities.map(activity => <ActivityCard key={activity.id} {...activity} />) : null}
+                        </ul>
+                    </div>
                 </div>
-            </div> 
-        
-        : <p>Loading...</p>
+            
+            : <p>Loading...</p>}
+        </div>
     )
 }
 

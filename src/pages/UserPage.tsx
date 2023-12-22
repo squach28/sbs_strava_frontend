@@ -29,12 +29,12 @@ const UserPage = () => {
             {        user ?
                 <div className="flex flex-col gap-3 p-4 dark:bg-[#31304D] dark:text-[#F0ECE5]">
                     <img className="rounded-full object-contain w-36 mx-auto border-4 shadow-md" src={user.avatarUrl} alt="" />
-                    <h1 className="text-2xl font-bold mx-auto">{user.discordName}</h1>
-                    <div>
-                        <h2 className="text-xl font-bold">Stats</h2>
+                    <h1 className="text-3xl font-bold mx-auto">{user.discordName}</h1>
+                    <div className="block mx-auto md:w-1/2">
+                        <h2 className="text-xl font-bold my-4">Stats</h2>
                         {stats ? <StatsTable stats={stats} /> : <p>Loading stats...</p>}
                     </div>
-                    <div>
+                    <div className="my-6">
                         <ul className="flex flex-col gap-4 items-center">
                         <h2 className="font-bold text-xl">Recent Activities</h2>
                             {recentActivities ? recentActivities.map(activity => <ActivityCard key={activity.id} {...activity} />) : null}

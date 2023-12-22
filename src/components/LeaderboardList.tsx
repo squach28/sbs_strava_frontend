@@ -24,7 +24,6 @@ const LeaderboardList = () => {
         }
     }, [selectedTime])
 
-    console.log(leaderboard)
 
     const getMonthlyLeaderboard = () => {
         fetch(`${import.meta.env.VITE_API_URL}/leaderboard`,)
@@ -41,10 +40,7 @@ const LeaderboardList = () => {
     const getAllTimeLeaderboard = () => {
         fetch(`${import.meta.env.VITE_API_URL}/leaderboard/allTime`)
             .then(res => res.json())
-            .then(data => setLeaderboard((prev) => {
-                console.log(prev)
-                return data
-            }))
+            .then(data => setLeaderboard(data))
     }
 
     const selectMonthLeaderboard = () => {
@@ -98,7 +94,6 @@ const LeaderboardList = () => {
             <h2 className="text-xl my-3 font-bold">{renderLeaderboardTitle()}</h2>
             <ol className="list-decimal flex flex-col gap-2 w-full md:w-1/2">
             {leaderboard ? leaderboard.users.map((user, place) => {
-                console.log(leaderboard.users)
                 const props = {
                     ...user,
                     place: place + 1

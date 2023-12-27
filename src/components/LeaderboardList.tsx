@@ -72,7 +72,7 @@ const LeaderboardList = () => {
         leaderboard ?
         <div className="md:px-[10em] px-8 flex flex-col items-center">
             <div className="flex items-center justify-between">
-                <h1 className="text-3xl font-bold ">Leaderboard</h1>
+                <h1 className="text-3xl font-bold my-4">Leaderboard</h1>
             </div>
             <div className="flex justify-between my-3 w-full md:w-1/2">
                 <button 

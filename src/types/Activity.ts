@@ -5,8 +5,9 @@ export type Activity = {
     discordName: string,
     avatarUrl: string,
     sport_type: string,
-    start_date_local: string,
+    start_date: string,
     distance: number,
     elapsed_time: number
+    timezone: string
 }
 

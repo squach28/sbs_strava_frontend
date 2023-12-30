@@ -27,7 +27,7 @@ const UserPage = () => {
         <div>
             <Navbar />
             {        user ?
-                <div className="flex flex-col gap-3 p-4 bg-primary-light dark:bg-[#31304D] dark:text-[#F0ECE5] lg:px-24 xl:px-48">
+                <div className="flex flex-col gap-3 p-4 min-h-screen bg-primary-light dark:bg-[#31304D] dark:text-[#F0ECE5] lg:px-24 xl:px-48">
                     <img className="rounded-full object-contain w-36 mx-auto border-4 shadow-md" src={user.avatarUrl} alt="" />
                     <h1 className="text-3xl font-bold mx-auto">{user.discordName}</h1>
                     <div className="block mx-auto md:w-1/2">

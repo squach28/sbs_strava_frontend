@@ -14,7 +14,7 @@ const ActivityCard = ({ name, discordId, discordName, avatarUrl, distance, elaps
     const date = new Date(start_date)
     const timezoneSplit = timezone.split(' ') // split strava string timezone by space, last element will contain actual timezone
     return (
-        <li className="flex flex-col w-full md:w-1/3 bg-white text-black dark:bg-gray-200 dark:text-black rounded-lg gap-1 p-3 shadow-lg">
+        <li className="flex flex-col w-full bg-white text-black dark:bg-gray-200 dark:text-black rounded-lg gap-1 p-3 shadow-lg md:w-1/2">
         {avatarUrl ? <div className="flex items-center gap-2">
                         <Link to={`/user/${discordId}`}><img className="rounded-full w-10 border-2 border-black" src={avatarUrl} alt={`profile picture of ${discordName}`} /></Link>
                         <Link to={`/user/${discordId}`}><p className="font-bold">{discordName}</p></Link>

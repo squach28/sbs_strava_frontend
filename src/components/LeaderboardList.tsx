@@ -81,7 +81,7 @@ const LeaderboardList = () => {
                     >Month
                 </button>
                 <button 
-                    className={`flex-1 p-2 text-[#F0ECE5] border-gray-50 border ${selectedTime === 'year' ? 'bg-green-500 font-bold' : 'bg-[#525458]'}`} 
+                    className={`flex-1 p-2 border-gray-50 border ${selectedTime === 'year' ? 'bg-green-500 font-bold' : 'bg-[#525458]'}`} 
                     onClick={selectYearLeaderboard}
                     >Year
                 </button>

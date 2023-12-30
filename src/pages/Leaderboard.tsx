@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar"
 
 const Leaderboard = () => {
     return (
-        <div className="bg-primary-light dark:bg-primary-dark dark:text-text-dark h-screen">
+        <div className="bg-primary-light dark:bg-primary-dark dark:text-text-dark h-screen lg:px-24 xl:px-48">
             <Navbar />
             <LeaderboardList />
         </div>

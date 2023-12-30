@@ -11,7 +11,7 @@ const Home = () => {
             .then(data => setActivities(data))
     }, [])
     return (
-        <div className="dark:bg-primary-dark dark:text-text-dark bg-primary-light text-text-light">
+        <div className="dark:bg-primary-dark dark:text-text-dark bg-primary-light text-text-light lg:px-24 xl:px-48">
             <Navbar />
             {activities ?
                 activities.length > 0 ? 

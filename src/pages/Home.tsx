@@ -15,7 +15,7 @@ const Home = () => {
             <Navbar />
             {activities ?
                 activities.length > 0 ? 
-                    <ul className="flex flex-col gap-4 px-8 py-4 items-center">
+                    <ul className="flex flex-col gap-4 pt-20 px-8 py-4 items-center">
                         <h1 className="px-8 text-3xl md:text-5xl md:my-5 font-bold">Home</h1>
                         {activities.map(activity => <ActivityCard key={activity.id} {...activity} />)}
                     </ul> : 

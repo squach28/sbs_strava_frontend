@@ -20,8 +20,12 @@ const Navbar = () => {
   }
 
   return (
-    <ul className="w-full flex px-8 py-4 justify-between items-center font-bold bg-primary-light text-text-light dark:bg-primary-dark dark:text-text-dark">
-        <li className="text-xl"><Link to="/">SBS Strava</Link></li>
+    <ul className="w-full absolute left-0 top-0 flex shadow-lg px-4 md:px-8 py-4 justify-between items-center font-bold bg-pink text-text-light dark:bg-purple-800 dark:text-text-dark">
+        <li className="text-xl">
+          <Link to="/">
+              <p>SBS Strava</p>
+          </Link>
+        </li>
         <li className="hover:cursor-pointer" onClick={toggleDarkMode}>{darkMode === 'dark' ? <img className="" src={SunIcon} /> : <img className="" src={MoonIcon}/>}</li>
         <li className="text-lg"><Link to="/leaderboard">Leaderboard</Link></li>
     </ul>

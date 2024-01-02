@@ -18,7 +18,9 @@ export default {
         'text': {
           light: 'black',
           dark: 'white'
-        }
+        },
+        'pink': '#E9507A'
+        
       }
     },
   },

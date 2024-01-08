@@ -4,10 +4,10 @@ export type Activity = {
     name: string,
     discordName: string,
     avatarUrl: string,
-    sport_type: string,
-    start_date: string,
+    category: string,
+    startDate: string,
     distance: number,
-    elapsed_time: number
+    elapsedTime: number
     timezone: string
 }
 

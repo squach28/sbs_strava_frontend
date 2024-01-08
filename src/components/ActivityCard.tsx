@@ -1,25 +1,41 @@
 import { Activity } from "../types/Activity"
 import { Link } from "react-router-dom"
+import RunIcon from '../assets/icons/run.svg'
+import PaddleIcon from '../assets/icons/paddles.svg'
 
 type ActivityCardProps = Activity & {
     discordName: string,
     avatarUrl: string
-
 }
 
-const ActivityCard = ({ name, discordId, discordName, avatarUrl, distance, elapsed_time, sport_type, start_date, timezone }: ActivityCardProps) => {
-    const time = elapsed_time / 60
+const ActivityCard = ({ name, discordId, discordName, avatarUrl, distance, elapsedTime, category, startDate, timezone }: ActivityCardProps) => {
+    const time = elapsedTime / 60
     const hours = time / 60
     const minutes = time
-    const date = new Date(start_date)
+    const date = new Date(startDate)
     const timezoneSplit = timezone.split(' ') // split strava string timezone by space, last element will contain actual timezone
+
+    const categoryIcon = (category: string): JSX.Element | null => {
+        switch(category) {
+            case 'run':
+                return <img className="object-contain w-8 h-8" src={RunIcon} />
+            case ('canoeing' || 'paddle'):
+                return <img className="object-contain w-8 h-8" src={PaddleIcon} />
+            default:
+                return null
+        }
+    }
+
     return (
         <li className="flex flex-col w-full bg-white text-black dark:bg-gray-200 dark:text-black rounded-lg gap-1 p-3 shadow-lg md:w-1/2">
         {avatarUrl ? <div className="flex items-center gap-2">
                         <Link to={`/user/${discordId}`}><img className="rounded-full w-10 border-2 border-black" src={avatarUrl} alt={`profile picture of ${discordName}`} /></Link>
                         <Link to={`/user/${discordId}`}><p className="font-bold">{discordName}</p></Link>
                     </div> : null}
-            <p className="text-xl md:text-2xl font-bold">{name} - {sport_type}</p>
+            <div className="flex gap-2 items-center">
+                <p className="text-xl md:text-2xl font-bold">{name}</p>
+                {categoryIcon(category)}
+            </div>
             <p className="text-lg md:text-xl">{date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: timezoneSplit[timezoneSplit.length - 1]})} - {date.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', timeZone: timezoneSplit[timezoneSplit.length - 1]})}</p>
             <div className="flex justify-center items-center text-lg md:text-xl mt-3">
                 <div className="flex flex-col flex-1 justify-center items-center">

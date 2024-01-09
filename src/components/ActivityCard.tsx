@@ -9,12 +9,12 @@ type ActivityCardProps = Activity & {
 }
 
 const ActivityCard = ({ name, discordId, discordName, avatarUrl, distance, elapsedTime, category, startDate, timezone }: ActivityCardProps) => {
-    const time = elapsedTime / 60
-    const hours = time / 60
-    const minutes = time
+    const time = elapsedTime
+    const hours = Math.floor(time / 3600)
+    const minutes = Math.floor((time / 60) - (hours * 60))
+    const seconds = time - (hours * 3600) - (minutes * 60)
     const date = new Date(startDate)
     const timezoneSplit = timezone.split(' ') // split strava string timezone by space, last element will contain actual timezone
-
     const categoryIcon = (category: string): JSX.Element | null => {
         switch(category) {
             case 'run':
@@ -25,7 +25,6 @@ const ActivityCard = ({ name, discordId, discordName, avatarUrl, distance, elaps
                 return null
         }
     }
-
     return (
         <li className="flex flex-col w-full bg-white text-black dark:bg-gray-200 dark:text-black rounded-lg gap-1 p-3 shadow-lg md:w-1/2">
         {avatarUrl ? <div className="flex items-center gap-2">
@@ -44,7 +43,7 @@ const ActivityCard = ({ name, discordId, discordName, avatarUrl, distance, elaps
                 </div>
                 <div className="flex flex-col flex-1 justify-center items-center">
                     <p className="font-bold">Time</p>
-                    <p>{hours >= 1 ? `${hours}h` : ''} {minutes % 60 !== 0 ? `${minutes}m` : ''}</p>
+                    <p>{hours >= 1 ? `${hours.toFixed(0)}h` : ''} {minutes > 0 ? `${minutes.toFixed(0)}m` : ''} {seconds > 0 ? `${seconds}s` : ''}</p>
                 </div>
             </div>
         </li>

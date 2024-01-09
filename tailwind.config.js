@@ -16,7 +16,7 @@ export default {
           dark: '#E5E7EB'
         },
         'text': {
-          light: 'black',
+          light: '#48233c',
           dark: 'white'
         },
         'pink': '#E9507A'

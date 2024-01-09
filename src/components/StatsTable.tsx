@@ -22,7 +22,7 @@ const StatsTable = (stats: StatsTableProps) => {
                     <Fragment key={stat.category}>
                         <p className="w-full border-[1px] p-2">{stat.category}</p>
                         <p className="w-full grid place-content-center border-[1px] p-2 ">{stat.numOfActivities}</p>
-                        <p className="w-full grid place-content-center border-[1px] justify-self-end p-2">{stat.distance} mi</p>
+                        <p className="w-full grid place-content-center border-[1px] justify-self-end p-2">{stat.distance.toFixed(2)} mi</p>
                     </Fragment>
                 )
             })}

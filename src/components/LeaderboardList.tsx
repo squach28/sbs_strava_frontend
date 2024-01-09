@@ -8,40 +8,42 @@ const LeaderboardList = () => {
     const [selectedTime, setSelectedTime] = useState<string>('month')
     const currentDate = new Date()
     useEffect(() => {
-        switch(selectedTime) {
-            case 'month':
-                getMonthlyLeaderboard()
-                break
-            case 'year':
-                getYearLeaderboard()
-                break
-            case 'all-time':
-                getAllTimeLeaderboard()
-                break
-            default:
-                getMonthlyLeaderboard()
-                break
+        const getMonthlyLeaderboard = () => {
+            fetch(`${import.meta.env.VITE_API_URL}/leaderboard`,)
+                .then(res => res.json())
+                .then(data => setLeaderboard(data))
         }
+    
+        const getYearLeaderboard = () => {
+            fetch(`${import.meta.env.VITE_API_URL}/leaderboard?monthOrYear=${new Date().getFullYear()}`)
+                .then(res => res.json())
+                .then(data => setLeaderboard(data))
+        }
+    
+        const getAllTimeLeaderboard = () => {
+            fetch(`${import.meta.env.VITE_API_URL}/leaderboard/allTime`)
+                .then(res => res.json())
+                .then(data => setLeaderboard(data))
+        }
+        
+        const fetchLeaderboard = (selectedTime: string) => {
+            switch(selectedTime) {
+                case 'month':
+                    getMonthlyLeaderboard()
+                    break
+                case 'year':
+                    getYearLeaderboard()
+                    break
+                case 'all-time':
+                    getAllTimeLeaderboard()
+                    break
+                default:
+                    getMonthlyLeaderboard()
+                    break
+            }
+        }
+        fetchLeaderboard(selectedTime)
     }, [selectedTime])
-
-
-    const getMonthlyLeaderboard = () => {
-        fetch(`${import.meta.env.VITE_API_URL}/leaderboard`,)
-            .then(res => res.json())
-            .then(data => setLeaderboard(data))
-    }
-
-    const getYearLeaderboard = () => {
-        fetch(`${import.meta.env.VITE_API_URL}/leaderboard?monthOrYear=${currentDate.getFullYear()}`)
-            .then(res => res.json())
-            .then(data => setLeaderboard(data))
-    }
-
-    const getAllTimeLeaderboard = () => {
-        fetch(`${import.meta.env.VITE_API_URL}/leaderboard/allTime`)
-            .then(res => res.json())
-            .then(data => setLeaderboard(data))
-    }
 
     const selectMonthLeaderboard = () => {
         setSelectedTime('month')

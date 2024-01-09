@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import RunIcon from '../assets/icons/run.svg'
 import PaddleIcon from '../assets/icons/paddles.svg'
 import WalkIcon from '../assets/icons/walk.svg'
+import BikeIcon from '../assets/icons/bike.svg'
 
 type ActivityCardProps = Activity & {
     discordName: string,
@@ -20,10 +21,13 @@ const ActivityCard = ({ name, discordId, discordName, avatarUrl, distance, elaps
         switch(category) {
             case 'run':
                 return <img className="object-contain w-8 h-8" src={RunIcon} />
-            case ('canoeing' || 'paddle'):
+            case 'canoeing':
+            case 'standuppaddling':
                 return <img className="object-contain w-8 h-8" src={PaddleIcon} />
             case 'walk':
                 return <img className="object-contain w-8 h-8" src={WalkIcon} />
+            case 'bike':
+                return <img className="object-contain w-8 h-8" src={BikeIcon} />
             default:
                 return null
         }
